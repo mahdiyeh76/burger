@@ -1,0 +1,51 @@
+.BurgerControls{
+
+    background-color: chocolate;
+    width: 100%;
+    height: 250px;
+}
+
+/* burger control */
+
+
+
+.buildercontrols{
+    background-color: burlywood;
+    text-align: center;
+   
+}
+
+.less{
+    color: white;
+    background-color: chocolate;
+    width: 100px;
+    border: 1px solid #502405 ;
+    border-radius: 5px;
+    height: 30px;
+    margin-top: 10px;
+    margin-bottom: 12px;
+    margin-right: 9px;
+   
+}
+
+.more{
+    color: white;
+    background-color: chocolate;
+    width: 100px;
+    border: 1px solid #502405 ;
+    border-radius: 5px;
+    height: 30px;
+    margin-top: 10px;
+    margin-bottom: 12px;
+}
+
+
+.Label {
+    padding: 10px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.cntl{
+    margin-left: 40%!important;
+}
