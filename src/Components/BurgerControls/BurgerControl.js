@@ -7,8 +7,8 @@ const BurgerControl = (props) =>{
        <div className="buildercontrol ">
             <div className="d-flex cntl">
                 <span className="Label">{props.label}</span>
-                <button className="less" onClick={props.remove} disabled={props.disabled}>less</button>
-                <button className="more" onClick={props.add} >more</button>
+                <button className="less" onClick={props.removed} disabled={props.disabled}>less</button>
+                <button className="more" onClick={props.added} >more</button>
             </div>
        </div>
     )

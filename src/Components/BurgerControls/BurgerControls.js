@@ -13,9 +13,16 @@ const BurgerControls = (props) => {
     return(
         <div  >
             <div className="BurgerControls ">
-                    <p className="text-center pt-4"> price:</p>
+                    <p className="text-center pt-4"> price:{props.totalprice}</p>
                     {controls.map(ctrl=>{
-                       return <BurgerControl key={ctrl.label} label={ctrl.label} />
+                        return  <BurgerControl
+                                     key={ctrl.label}
+                                     label={ctrl.label}
+                                     added={()=>props.ingredientadded(ctrl.type)}
+                                     removed={()=>props.ingredientremoved(ctrl.type)}
+                                     disabled={props.disabledInfo[ctrl.type]}
+                       
+                                />
                     })} 
            
             </div>
