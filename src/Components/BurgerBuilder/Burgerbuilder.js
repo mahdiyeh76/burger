@@ -1,6 +1,10 @@
 import React,{Component} from 'react';
 import Burger from '../Burger/Burger';
 import BurgerControls from '../BurgerControls/BurgerControls';
+import Modal from '../Burger/Modal';
+import Ordersummary from '../Burger/Ordersummary';
+
+
 
 
 const INGREDIENTS_PRICE={
@@ -19,7 +23,30 @@ export default class BurgerBuilder extends Component{
 
         },
         totalprice:4,
+        purchase:false,
+        purchasing:false
     }
+
+
+    Updatepurchase (ingredients) {
+
+        // const ingredients={...this.state.ingredients}
+
+        const sum = Object.keys(ingredients)
+        .map(igkey=>{
+            return ingredients[igkey];
+        })
+
+        .reduce((sum,el)=>{
+            return sum + el
+        },0);
+
+        this.setState({purchase:sum > 0});
+
+    }
+
+
+
 
 
     addIngredients=(type)=>{
@@ -34,6 +61,7 @@ export default class BurgerBuilder extends Component{
         const newprice=Oldprice +priceaddition;
 
         this.setState({totalprice:newprice,ingredients:UpdatedIngredients});
+        this.Updatepurchase(UpdatedIngredients);
 
 
 
@@ -54,8 +82,15 @@ export default class BurgerBuilder extends Component{
         const newprice=Oldprice -pricededuction;
 
         this.setState({totalprice:newprice,ingredients:UpdatedIngredients});
+        this.Updatepurchase(UpdatedIngredients);
 
     }
+
+    purchaseHandler(){
+        this.setState({purchasing:true});
+    }
+
+
     render(){
 
         const disabledInfo={...this.state.ingredients};
@@ -65,9 +100,15 @@ export default class BurgerBuilder extends Component{
         
         return(
             <div>
+                <Modal>
+                    <Ordersummary  ingredients={this.state.ingredients}/>
+                </Modal>
+
                 <div className="container">
                     <Burger ingredients={this.state.ingredients} />
                 </div>
+                
+               
 
                 <BurgerControls 
                 
@@ -75,6 +116,8 @@ export default class BurgerBuilder extends Component{
                     ingredientremoved={this.removeIngredients}
                     totalprice={this.state.totalprice}
                     disabledInfo={disabledInfo}
+                    purchaseable={this.state.purchase}
+                    ordered={this.purchaseHandler}
                 />
 
             </div>
