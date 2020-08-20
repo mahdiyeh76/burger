@@ -3,6 +3,7 @@ import Burger from '../Burger/Burger';
 import BurgerControls from '../BurgerControls/BurgerControls';
 import Modal from '../Burger/Modal';
 import Ordersummary from '../Burger/Ordersummary';
+import axios from 'axios';
 
 
 
@@ -98,7 +99,28 @@ export default class BurgerBuilder extends Component{
 
     purchasecontinueHandler = ( ) =>{
         
-        alert('continue!');
+        // alert('continue!');
+        const order={
+            ingredients:this.state.ingredients,
+            price:this.state.totalprice,
+            customer:{
+                name:'mahdan',
+                address:{
+                    city:'dusseldorf',
+                    country:'germany'
+                },
+                email:'mahdan@gmail.com',
+
+            },
+
+            deliverymethod:'fasttest'
+
+
+        }
+
+        axios.post('/orders.json',order)
+        .then(response =>console.log(response))
+        .catch(error=>console.log(error));
 
     }
 
