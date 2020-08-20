@@ -5,3 +5,8 @@
 .modal-header{
     border-bottom: 0!important;
 }
+
+.btns{
+    display: flex;
+    justify-content: space-evenly;
+}

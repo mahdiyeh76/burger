@@ -1,28 +1,42 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './Ordersummary.css';
+import Button from 'react-bootstrap/Button';
 
 
-
-const Ordersummary =(props)=>{
-
-    const ingredientSummary=Object.keys(props.ingredients)
-    .map(igKey=>{
-    return(
-        <li>{igKey}:{props.ingredients[igKey]}</li>
-
-        ) ;
-    });
+class Ordersummary extends Component{
 
 
-    return(
-        <div>
+    render(){
+
+        const ingredientSummary=Object.keys(this.props.ingredients)
+            .map(igKey=>{
+            return(
+                    <li key={igKey}>{igKey}:{this.props.ingredients[igKey]}</li>
+            ) ;
+        });
+
+
+        return(
+            <div>
             
-            <ul className="ulorder">
-               {ingredientSummary}
-            </ul>
+                <ul className="ulorder">
+                     {ingredientSummary}
+                </ul>
+                <p><strong>total price:{this.props.totalprice.toFixed(3)}</strong></p>
+                <div className="btns ">
+                    <Button variant="success" onClick={this.props.purchasecontinueHandler}>Continue</Button>
+                    <Button variant="danger" onClick={this.props.purchasecancelHandler}>Cancle</Button>
+                </div>
+          
+            </div>
 
-        </div>
-    )
+        );
+    }
+
+
+    
+
+
 }
 
 

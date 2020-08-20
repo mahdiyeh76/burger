@@ -1,35 +1,42 @@
-import React from 'react';
+import React,{Component} from 'react';
 import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
 import './Ordersummary.css';
+import Backdrop from './Backdrop';
 
-const modal =(props)=>{
-
-    
-
-
+class Modall extends Component{
+  render(){
 
     return(
-        <div>
 
-<Modal.Dialog>
-  <Modal.Header closeButton>
-    <Modal.Title>your order</Modal.Title>
-  </Modal.Header>
+      <div>
+      <Backdrop  show={this.props.show} clicked={this.props.modalClosed}/>
 
-  <Modal.Body>
-  <p>{props.children}</p>
-  </Modal.Body>
+      <div style={{transform :this.props.show ? 'translateY(0)':'translateY(-100vh)',
+                  opacity:this.props.show ?'1':'0'}}
+      >
 
-  <Modal.Footer>
-    <Button variant="secondary">Close</Button>
-    <Button variant="primary">Save changes</Button>
-  </Modal.Footer>
-</Modal.Dialog>
-           
-        </div>
+          <Modal.Dialog>
+            <Modal.Header >
+              <Modal.Title>your order</Modal.Title>
+            </Modal.Header>
+
+            <Modal.Body>
+              <p>{this.props.children}</p>
+            </Modal.Body>
+
+            {/* <Modal.Footer>
+              <Button variant="secondary">Close</Button>
+              <Button variant="primary">Save changes</Button>
+            </Modal.Footer> */}
+          </Modal.Dialog>
+         
+      </div>
+    </div>
+
     );
+  }
 }
 
 
-export default modal;
+
+export default Modall;
