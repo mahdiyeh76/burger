@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // import ErrorModal from './ModalError';
-import Modal from 'react-bootstrap/Modal';
+// import Modal from 'react-bootstrap/Modal';
 
 
 
@@ -13,22 +13,23 @@ const ErrorHandler =(WrappedComponent,axios)=>{
             error:null
         }
 
-        componentDidMount(){
-            axios.interceptors.request.use(req => {
+        componentWillMount(){
+           this.reqInterceptor = axios.interceptors.request.use(req => {
                 this.setState({error: null});
                 return req;
             });
 
-            axios.interceptors.response.use(res => res, error => {
+            this.resInterceptor = axios.interceptors.response.use(res => res, error => {
                 this.setState({error: error});
             });
-            // axios.interceptors.use(req=>{
-            //     this.setState({error:null});
-            //     return req;
-            // })
-            // axios.interceptors.use(null,error=>{
-            //     this.setState({error:error});
-            // });
+            
+        }
+
+
+        componentWillUnmount(){
+            // console.log('componentwillunmount',this.reqInterceptor,this.resInterceptor);
+            axios.interceptors.request.eject(this.reqInterceptor);
+            axios.interceptors.response.eject(this.resInterceptor);
         }
 
 
@@ -41,7 +42,7 @@ const ErrorHandler =(WrappedComponent,axios)=>{
                 <div>
                 {/* <ErrorModal /> */}
 
-                <div show={this.state.error} clicked={this.errorconfirmedHandler}>
+                {/* <div show={this.state.error} modalClosed={this.errorconfirmedHandler}>
                     <Modal.Dialog>
                         
                         <Modal.Body>
@@ -49,7 +50,7 @@ const ErrorHandler =(WrappedComponent,axios)=>{
                         </Modal.Body>
 
                     </Modal.Dialog>
-                </div>
+                </div> */}
               
                 <WrappedComponent {...this.props}  />
 
