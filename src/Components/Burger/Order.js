@@ -3,6 +3,7 @@ import './Ordersummary.css';
 
 
 const Order = (props) =>{
+
     const ingredients = [];
 
     for ( let ingredientName in props.ingredients ) {
@@ -21,7 +22,9 @@ const Order = (props) =>{
                 display: 'inline-block',
                 margin: '0 8px',
                 border: '1px solid #ccc',
-                padding: '5px'
+                padding: '5px',
+                marginTop:'5px',
+                borderRadius:'10px'
                 }}
             key={ig.name}>{ig.name} ({ig.amount})</span>;
     });

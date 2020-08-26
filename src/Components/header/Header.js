@@ -25,8 +25,8 @@ export default class Header extends Component{
                                
            
            
-                                    <NavLink to="/"  active >BurgerBuilder</NavLink>
-                                    <NavLink to="/Orders">Orders</NavLink>
+                                    <NavLink to="/"  active style={{marginLeft:'15px',color:'gray',textDecoration:'none'}} >BurgerBuilder</NavLink>
+                                    <NavLink to="/Orders" style={{marginLeft:'15px',color:'gray',textDecoration:'none'}}>Orders</NavLink>
                                 </Nav>
                             </Navbar.Collapse>
                 </Navbar>

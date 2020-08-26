@@ -47,7 +47,7 @@ class ContactData extends Component{
 
         axios.post('/orders.json',order)
         .then(response =>{this.setState({loading:false });
-            this.props.history.push('/');
+            this.props.history.push('/Orders');
             })
             
         .catch(error=>this.setState({loading:false }));

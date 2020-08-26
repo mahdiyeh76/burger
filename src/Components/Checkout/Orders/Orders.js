@@ -2,17 +2,19 @@ import React,{Component} from 'react';
 import './Orders.css';
 import Order from '../../Burger/Order';
 import axios from '../../../axios-orders';
-import withErrorHandler from '../../ErrorHandler/ErrorHandler';
+// import withErrorHandler from '../../ErrorHandler/ErrorHandler';
 
 
 
 class Orders extends  Component{
+
     state={
         orders:[],
         loading:true
     }
+
     componentDidMount(){
-        axios.get('./orders.json')
+        axios.get('/orders.json')
         .then(res=>{
             // console.log(res.data);
             const fetchedOrders = [];
@@ -23,15 +25,18 @@ class Orders extends  Component{
                 });
 
             }
-            this.setState({loading:false});
+            this.setState({loading:false,orders: fetchedOrders});
         })
 
         .catch(err=>{this.setState({loading:false})})
     }
     render(){
+
+        console.log(this.state.orders,'ord');
         return(
             
-                <div className="container mt-5">
+                <div className="container mt-5 ">
+                   
                 {this.state.orders.map(order => (
                     <Order 
                         key={order.id}
@@ -43,4 +48,4 @@ class Orders extends  Component{
         )
     }
 }
-export default  withErrorHandler(Orders,axios);
+export default Orders;
