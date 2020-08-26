@@ -1,12 +1,12 @@
 import React from 'react';
 import BurgerIngredient from './Burgeringredients';
 import './burgeringredient.css';
-
+// import {withRouter} from 'react-router-dom';
 
 
 const Burger = (props) =>{
 
-
+    // console.log(props);
     let transformedIngredients = Object.keys( props.ingredients )
     .map( igKey => {
         return [...Array( props.ingredients[igKey] )].map( ( _, i ) => {

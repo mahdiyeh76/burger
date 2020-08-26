@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import BurgerBuilder from './Components/BurgerBuilder/Burgerbuilder';
 import Checkout from './Components/Checkout/Checkout';
 import {Route,Switch} from 'react-router-dom';
+import Orders from './Components/Checkout/Orders/Orders';
 
 class App extends Component {
 
@@ -25,7 +26,7 @@ class App extends Component {
   // }
 
 
-
+ 
   render(){
     
     // console.log(window.location,'history'); 
@@ -35,8 +36,10 @@ class App extends Component {
       <div className="App">
           <Header />
           <Switch>
-            <Route path="/" exact component={BurgerBuilder} />
+           
+            <Route path="/" exact={true} component={BurgerBuilder} />
             <Route path="/checkout" component={Checkout} />
+            <Route path="/Orders" component={Orders} />
           </Switch>
          
           {/* <BurgerBuilder /> 

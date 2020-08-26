@@ -10,3 +10,14 @@
     display: flex;
     justify-content: space-evenly;
 }
+
+
+/* Order.css */
+
+
+.orderbox{
+    height: 100px;
+    border: 1px solid gray;
+    border-radius: 15px;
+    
+}

@@ -4,7 +4,8 @@ import Nav from 'react-bootstrap/Nav';
 import 'bootstrap/dist/css/bootstrap.min.css';
 // import {Route,Switch} from 'react-router-dom';
 // import BurgerBuilder from '../BurgerBuilder/Burgerbuilder';
-// import Checkout from '../Checkout/Checkout'
+// import Checkout from '../Checkout/Checkout';
+import {NavLink}  from 'react-router-dom'
 
 export default class Header extends Component{
     render(){
@@ -21,9 +22,11 @@ export default class Header extends Component{
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
                             <Navbar.Collapse id="basic-navbar-nav">
                                 <Nav className="mr-auto ">
-                                
-                                    <Nav.Link link="/" active={true}>BurgerBuilder</Nav.Link>
-                                    <Nav.Link link="/">Checkout</Nav.Link>
+                               
+           
+           
+                                    <NavLink to="/"  active >BurgerBuilder</NavLink>
+                                    <NavLink to="/Orders">Orders</NavLink>
                                 </Nav>
                             </Navbar.Collapse>
                 </Navbar>

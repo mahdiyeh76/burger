@@ -13,8 +13,8 @@ const Checkoutsummary = ( props ) => {
             </div>
 
             <div className="btns ">
-                    <Button variant="success" clicked>Continue</Button>
-                    <Button variant="danger" clicked>Cancle</Button>
+                    <Button variant="success" onClick={props.checkoutContinued}>Continue</Button>
+                    <Button variant="danger" onClick={props.checkoutCancelled}>Cancle</Button>
             </div>
         </div>
     )
