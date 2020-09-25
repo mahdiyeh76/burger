@@ -7,7 +7,13 @@ import Form from 'react-bootstrap/Form';
 const Input = ( props ) => {
     
        let inputElement=null;
-   
+    
+       if(props.invalid && props.shouldValidate && props.touched){
+    //     return 
+    //     inputElement= <Form.Control.Feedback type="invalid">
+    //         Please choose a username.
+    //   </Form.Control.Feedback>
+       }
 
     switch(props.elementType){
 
